@@ -17,8 +17,6 @@ class GetTransactionStatus(Resource):
         #transaction_id = args.parse_args().get("transactionid")
         userAccount = mongo.db.Transfer.find_one({"TransactionID": transaction_id})
 
-        print(userAccount)
-
         if userAccount:
             jsonResonpse = {
                 "code": 200,
