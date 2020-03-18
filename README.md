@@ -52,6 +52,7 @@ Basic Auth ->  "username": "freeworldboss", "password": "cq#4&Ds6~K+0iwU_"
 | email      | False      | String                |
 | amount     | True       | Float  eg. 8749.31    |
 | description| False      | String                |
+| service_type| False     | String eg. Wallet     |
 
     ```
      {
@@ -195,10 +196,7 @@ Response:
       "transaction_ID": "6f647175-48f0-4368-b77d-bc7aa6979b38"
     }
 ```
-
-
 ```
-
 # PYTHON
 ```
 import requests
