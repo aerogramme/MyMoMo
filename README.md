@@ -64,11 +64,11 @@ Basic Auth ->  "username": "freeworldboss", "password": "cq#4&Ds6~K+0iwU_"
        "amount": 8749.31
     }
     ```
- - http://35.236.211.103/momo/api/v1/addcash
- - http://35.236.211.103/momo/api/v1/withdraw
- - http://35.236.211.103/momo/api/v1/transfer
- - http://35.236.211.103/momo/api/v1/balance/<<string:phone>>
- - http://35.236.211.103/momo/api/v1/balance/
+ - http://35.245.216.6/momo/api/v1/addcash
+ - http://35.245.216.6/momo/api/v1/withdraw
+ - http://35.245.216.6/momo/api/v1/transfer
+ - http://35.245.216.6/momo/api/v1/balance/<<string:phone>>
+ - http://35.245.216.6/momo/api/v1/balance/
 
 
 #### GET Request:
@@ -164,7 +164,7 @@ Response:
 Remote:
 
  curl -X POST \
-  http://35.236.211.103:80/momo/api/v1/addcash/ \
+  http://35.245.216.6:80/momo/api/v1/addcash/ \
   -H 'Accept: */*' \
   -H 'Authorization: Basic ZnJlZXdvcmxkYm9zczpjcSM0JkRzNn5LKzBpd1Vf' \
   -H 'Accept-Encoding: gzip, deflate' \
@@ -201,7 +201,7 @@ Response:
 ```
 import requests
 
-url = "http://35.236.211.103:80/momo/api/v1/balance/"
+url = "http://35.245.216.6:80/momo/api/v1/balance/"
 
 payload = "{"firstname\":\"THEOPHILUS\",\n   \"lastname\":\"SIAMEH\",\n   \"fromPhone\":\"0243559227\",\n   \"toPhone\":\"0205592278\",\n   \"email\":\"theodondre@gmail.com\",\n   \"amount\": 8749.31}"
 
@@ -223,7 +223,7 @@ print(response.text)
 
 # JAVA
 ```
-public final String BASE_URL = "http://35.236.211.103:80/momo/api/v1/balance/"
+public final String BASE_URL = "http://35.245.216.6:80/momo/api/v1/balance/"
 OkHttpClient client = new OkHttpClient();
 
 MediaType mediaType = MediaType.parse("application/json");
@@ -256,7 +256,7 @@ Response response = client.newCall(request).execute();
 ```
 <?php <br/>
 $request = new HttpRequest();
-$request->setUrl('http://35.236.211.103:80/momo/api/v1/balance/');
+$request->setUrl('http://35.245.216.6:80/momo/api/v1/balance/');
 $request->setMethod(HTTP_METH_POST);
 
 $request->setHeaders(array(
