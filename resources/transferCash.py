@@ -62,6 +62,9 @@ class TransferCash(Resource):
             # deduct money from sending account
             updateAccount(fromPhone, round(float(cash_from - amount_after), 2))
 
+            trans_id = transaction_id()
+            trans_confirm_number = transfer_confirmation_number()
+
             # save to transfer collection
             mongo.db.Transfer.insert_one({
                 "FirstName": firstname,
@@ -75,8 +78,8 @@ class TransferCash(Resource):
                 "Description": description,
                 "ReceiverMobileNetwork": toNetwork,
                 "SenderMobileNetwork": fromNetwork,
-                "ConfirmationNumber": transfer_confirmation_number(),
-                "TransactionID": transaction_id(),
+                "ConfirmationNumber": trans_confirm_number,
+                "TransactionID": trans_id,
                 "Created_At": date_time(),
                 "Status":"SUCCESS",
                 "response":"Transaction was successful"
@@ -85,8 +88,8 @@ class TransferCash(Resource):
                 "code": 200,
                 "status": "SUCCESS",
                 "amount": float(amount),
-                "transaction_ID": transaction_id(),
-                "confirmation_Number": transfer_confirmation_number(),
+                "transaction_ID": trans_id,
+                "confirmation_Number": trans_confirm_number,
                 "message": "Money transferred successfully from your wallet".format(amount)
             }
             return jsonify(jsonResonpse)

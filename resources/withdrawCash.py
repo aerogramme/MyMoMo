@@ -45,6 +45,9 @@ class WithdrawCash(Resource):
             # deduct money from vendor or customer
             updateAccount(phone, balance - amount)
 
+            trans_id = transaction_id()
+            withdraw_number = withdraw_confirmation_number()
+
             # Insert data into Withdrawal Collection
             mongo.db.Withdrawal.insert_one({
                 #"AmountBeforeFees": round(float(amount), 2),
@@ -53,8 +56,8 @@ class WithdrawCash(Resource):
                 "Network": network,
                 "Phone": phone,
                 "VendorID": vendorId,
-                "TransactionID": transaction_id(),
-                "ConfirmationNumber": withdraw_confirmation_number(),
+                "TransactionID": trans_id,
+                "ConfirmationNumber": withdraw_number,
                 "CreatedAt": date_time(),
                 "Status":"SUCCESS"
             })
@@ -62,8 +65,8 @@ class WithdrawCash(Resource):
                 "code": 200,
                 "status": "SUCCESS",
                 "amount": float(amount),
-                "transaction_ID": transaction_id(),
-                "confirmation_Number": withdraw_confirmation_number(),
+                "transaction_ID":trans_id,
+                "confirmation_Number": withdraw_number,
                 "message": "Money withdrawn successfully from your wallet",
                 "response": "Transaction was successful"
              }

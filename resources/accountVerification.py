@@ -9,7 +9,6 @@ from common.auth import verify_password, users, unauthorized, auth
 verify_password(users.get("username"), users.get("password"))
 unauthorized
 
-
 # def argParser():
 #     parser = RequestParser(bundle_errors=True)
 #     parser.add_argument("phone", type=str, required=True, help="Phone Number Required : format -> 0243559227")

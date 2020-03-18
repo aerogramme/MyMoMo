@@ -51,6 +51,9 @@ class AddCash(Resource):
             # Add remaining money to user account
             updateAccount(phone, round(float(cash + amount), 2))
 
+            trans_id = transaction_id()
+            confirm_number = addcash_confirmation_number()
+
             # Insert data into TopUp Collection
             mongo.db.TopUps.insert_one({
                 "FirstName": firstname,
@@ -60,8 +63,8 @@ class AddCash(Resource):
                 "SenderPhone": phone,
                 "Email": email,
                 "Description": description,
-                "TransactionID": transaction_id(),
-                "ConfirmationNumber": addcash_confirmation_number(),
+                "TransactionID": trans_id,
+                "ConfirmationNumber": confirm_number,
                 "CreatedAt": date_time(),
                 "Status": "SUCCESS",
                 "Service_type": service_type
@@ -71,8 +74,8 @@ class AddCash(Resource):
                 "code": 200,
                 "status": "SUCCESS",
                 "amount": float(amount),
-                "transaction_ID": transaction_id(),
-                "confirmation_Number": addcash_confirmation_number(),
+                "transaction_ID": trans_id,
+                "confirmation_Number": confirm_number,
                 "message": "Money added successfully to your wallet",
                 "response": "Transaction was successful"
             }
