@@ -3,7 +3,7 @@ from flask import Flask
 from flask_pymongo import PyMongo
 from flask_restful import Api
 from common.cred import data
-from flasgger import Swagger
+#from flasgger import Swagger
 
 # MongoDB Credentials
 DB = data.get("DB")
@@ -11,7 +11,7 @@ USERNAME = data.get("username")
 PASSWORD = data.get("password")
 
 app = Flask(__name__)
-swagger = Swagger(app)
+#swagger = Swagger(app)
 
 # app.config.update(dict(
 #     DEBUG=True,
