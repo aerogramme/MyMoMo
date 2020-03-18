@@ -39,7 +39,19 @@ python app.py
 # API EndPoints
 ##### POST Request:
 ```
+EndPoints:
+ - https://kubedoc.appspot.com/momo/api/v1/addcash
+ - https://kubedoc.appspot.com/momo/api/v1/withdraw
+ - https://kubedoc.appspot.com/momo/api/v1/transfer
+ - https://kubedoc.appspot.com/momo/api/v1/balance/<<string:phone>>
+ - https://kubedoc.appspot.com/momo/api/v1/get-transaction-status/<<string:transaction_id>>
+ - https://kubedoc.appspot.com/momo/api/v1/account-verification/<<string:phone>>
+
+Host : https://kubedoc.appspot.com
+Authorization: Basic {ACCESS_TOKEN}
+Content-Type: application/json
 Basic Auth ->  "username": "freeworldboss", "password": "cq#4&Ds6~K+0iwU_"
+
 ```
  - Body
  
@@ -66,12 +78,6 @@ Basic Auth ->  "username": "freeworldboss", "password": "cq#4&Ds6~K+0iwU_"
        "description":"Testing transaction"
     }
     ```
- - https://kubedoc.appspot.com/momo/api/v1/addcash
- - https://kubedoc.appspot.com/momo/api/v1/withdraw
- - https://kubedoc.appspot.com/momo/api/v1/transfer
- - https://kubedoc.appspot.com/momo/api/v1/balance/<<string:phone>>
- - https://kubedoc.appspot.com/momo/api/v1/get-transaction-status/<<string:transaction_id>>
- - https://kubedoc.appspot.com/momo/api/v1/account-verification/<<string:phone>>
 
 
 #### GET Request:
