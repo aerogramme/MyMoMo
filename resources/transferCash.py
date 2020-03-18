@@ -12,7 +12,6 @@ verify_password(users.get("username"), users.get("password"))
 unauthorized
 
 
-
 def argParser():
     parser = RequestParser(bundle_errors=True)
     parser.add_argument("firstname", type=str, required=False, help="First Name Required")

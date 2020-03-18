@@ -3,9 +3,7 @@ import os
 import uuid
 from binascii import hexlify
 from random import random
-
 from passlib.handlers.sha2_crypt import sha256_crypt
-
 from common.config import mongo
 
 

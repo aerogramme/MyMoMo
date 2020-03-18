@@ -20,6 +20,7 @@ def argParser():
     parser.add_argument("amount", type=float, required=True, help="Amount Required")
     parser.add_argument("description", type=float, required=False, help="Description of Transaction")
     parser.add_argument("email", type=str, required=False, help="Enter Email ID")
+    parser.add_argument("service_type", type=str, required=False, help="Provide Service Type")
     return parser
 
 
@@ -34,6 +35,7 @@ class AddCash(Resource):
         amount = args.parse_args().get("amount")
         description = args.parse_args().get("description")
         email = args.parse_args().get("email")
+        service_type = args.parse_args().get("service_type")
         network = getNetworkName(phone)
 
         # check if amount is not less than 0
@@ -61,7 +63,8 @@ class AddCash(Resource):
                 "TransactionID": transaction_id(),
                 "ConfirmationNumber": addcash_confirmation_number(),
                 "CreatedAt": date_time(),
-                "Status": "SUCCESS"
+                "Status": "SUCCESS",
+                "Service_type": service_type
             })
 
             jsonResponse = {

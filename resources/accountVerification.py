@@ -3,6 +3,11 @@ from flask_restful import Resource
 from flask_restful.reqparse import RequestParser
 
 from common.config import mongo
+from common.auth import verify_password, users, unauthorized, auth
+
+# make sure to retrieve data from database
+verify_password(users.get("username"), users.get("password"))
+unauthorized
 
 
 # def argParser():
@@ -11,21 +16,20 @@ from common.config import mongo
 #     return parser
 
 class AccountVerification(Resource):
-    def get(self, phone_number):
+    @auth.login_required
+    def get(self, phone):
         '''Check if Phone Number Exist in DB'''
         #args = argParser()
         #phone_number = args.parse_args().get("phone")
-        userAccount = mongo.db.Register({"Phone": phone_number})
+        userAccount = mongo.db.Register.find_one({"Phone": phone})
 
-        print(userAccount)
-
-        if userAccount.count_documents({"Phone": phone_number}) > 0:
+        if userAccount:
             jsonResonpse = {
                 "code": 200,
                 "status": "SUCCESS",
-                "message": {
+                "response": {
                 "registration_status": "Registered",
-                "registered_name": userAccount["firstname"] + " " + userAccount["lastname"]
+                "registered_name": userAccount["FirstName"]+" "+userAccount["LastName"]
                 }
             }
             return jsonify(jsonResonpse)

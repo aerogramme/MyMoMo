@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 auth = HTTPBasicAuth()
 
 users = {
-    "freeworldboss": generate_password_hash("cq#4&Ds6~K+0iwU_"),
+    "freeworldboss": generate_password_hash("$5$rounds=535000$gUf/KanM4MwLtl1d$Ay93DrMK0JJRdROIddzXoNOJN12.8YtwvEvkvarM2wC"),
     "Kartel": generate_password_hash("bye")
 }
 

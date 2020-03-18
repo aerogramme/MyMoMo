@@ -48,7 +48,7 @@ def get_initial_response():
     message = {
         'apiVersion': 'v1.0',
         'status': '200',
-        'message': 'Welcome to the MyMoMo.io API'
+        'message': 'Welcome to MyMoMo.io API'
     }
     return jsonify(message)
 
@@ -61,7 +61,9 @@ api.add_resource(TransferCash, '/momo/api/v1/transfer', endpoint = '/transfer')
 api.add_resource(CheckBalance, '/momo/api/v1/balance/<string:phone>')
 api.add_resource(WithdrawCash, '/momo/api/v1/withdraw', endpoint = '/withdraw')
 api.add_resource(AccountVerification, '/momo/api/v1/account-verification/<string:phone>')
-api.add_resource(GetTransactionStatus, '/momo/api/v1/get-transaction-status/<string:transaction_id>', endpoint = '/get-transaction-status')
+api.add_resource(GetTransactionStatus, '/momo/api/v1/get-transaction-status/<string:transaction_id>')
+#api.add_resource(GetTransactionStatus, '/momo/api/v1/get-transfer-transaction-status/<string:transaction_id>')
+#api.add_resource(GetTransactionStatus, '/momo/api/v1/get-withdraw-transaction-status/<string:transaction_id>')
 
 if __name__ == '__main__':
     # app.run(host='0.0.0.0',port=80,debug=True)

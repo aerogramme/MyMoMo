@@ -1,0 +1,10 @@
+Flask
+PyMongo
+Swagger
+HTTPBasicAuth
+werkzeug
+binascii
+random
+sha256_crypt
+hexlify
+flask_restful

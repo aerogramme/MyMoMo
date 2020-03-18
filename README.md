@@ -1,87 +1,126 @@
 # MyMoMo.io
 ```
-Simple Mobile Money application with authentication and CRUD functionality. Contributors are welcome.
+Simple Mobile Money Wallet Application 
 ```
-![alt text](https://github.com/aerogramme/momo/blob/master/dashboard.png)
 
 # Features
-- Users can Pay loan
-- Users can signup for an account
-- Users can login into a registered account
-- Users can Take loan
+```
 - Users can Top Up money on their mobile money wallet
 - Users can Transfer money to other mobile money wallet
 - Users can Withdraw money from their mobile money wallet
+```
 
-# Installation
-
-To use this template, your computer needs:
-
-- [Python 3](https://python.org)
+# Installation & Requirements
+- Python 3
 - Python Flask Micro-framework
-- [Pip Package Manager](https://pypi.python.org/pypi)
 - Docker
-- MongoDB =====> create an account here : https://cloud.mongodb.com
-   - Create the following mongodb collections:
-	  - Payloan
-	  - Register
-	  - Takeloan
-	  - TopUp
+- MongoDB
+   - Create the following collections:
+	  - Topup
 	  - Transfer
 	  - Withdrawal
 
-### Running the app in docker container
+# Running the app in docker container
 
-# Using Docker:
+##### Using Docker:
 ```
 - docker-compose up
 ```
-# CD into Docker
+##### CD into Docker container
 ```
 - docker-compose exec -it <name of container> bash
 ```
 
-### Running the app locally
+# Running the app locally
 
 ```
 python app.py
 ```
 # API EndPoints
-#### POST Request:
-Basic Auth ->  "username": "freeworldboss", "password": "cq#4&Ds6~K+0iwU_",
+##### POST Request:
+```
+Basic Auth ->  "username": "freeworldboss", "password": "cq#4&Ds6~K+0iwU_"
+```
  - Body
- ```
+ 
 | Field      | Required   |         Type          |
 |------------|------------|-----------------------|
 | FirstName  | False      | String                |
-| LastNamee  | False      | String                |
+| LastName   | False      | String                |
 | fromPhone  | True       | String eg. 0243559227 |
 | toPhone    | True       | String                |
 | email      | False      | String                |
 | amount     | True       | Float  eg. 8749.31    |
 | description| False      | String                |
 
-
- {
-   "firstname":"THEOPHILUS",
-   "lastname":"SIAMEH",
-   "fromPhone":"0243559227",
-   "toPhone":"0205592278",
-   "email":"theodondre@gmail.com",
-   "amount": 8749.31
-}
-```
- - http://35.236.211.103/momo/api/v1/addCash
+    ```
+     {
+       "firstname":"THEOPHILUS",
+       "lastname":"SIAMEH",
+       "fromPhone":"0243559227",
+       "toPhone":"0205592278",
+       "email":"theodondre@gmail.com",
+       "amount": 8749.31
+    }
+    ```
+ - http://35.236.211.103/momo/api/v1/addcash
  - http://35.236.211.103/momo/api/v1/withdraw
  - http://35.236.211.103/momo/api/v1/transfer
  - http://35.236.211.103/momo/api/v1/balance/<<string:phone>>
  - http://35.236.211.103/momo/api/v1/balance/
 
+
+#### GET Request:
+
+```bash
+GET transaction status
+
+        -  http://127.0.0.1:5000/momo/api/v1/get-transaction-status/<<string:transaction_id>>
+
+GET account verification:
+
+        -  http://127.0.0.1:5000/momo/api/v1/account-verification/<<string:phone>>
+
+```
+
+```bash
+curl -X GET http://127.0.0.1:5000/momo/api/v1/get-transaction-status/0089fc37-0aa0-485a-b40d-ffc67d347c1a
+
+Response:
+      ```
+        {
+          "code": 200,
+          "response": {
+            "Amount": 40.0,
+            "ConfirmationNumber": "TNF-20200316-D10197",
+            "Created_At": "2020-03-16 17:46:36",
+            "Phone": "0205592278",
+            "TransactionID": "0089fc37-0aa0-485a-b40d-ffc67d347c1a"
+          },
+          "status": "SUCCESS"
+        }
+       ```
+curl -X GET http://127.0.0.1:5000/momo/api/v1/account-verification/0243559227
+
+Response:
+      ```
+        {
+          "code": 200,
+          "response": {
+            "registered_name": "THEOPHILUS SIAMEH",
+            "registration_status": "Registered"
+          },
+          "status": "SUCCESS"
+        }
+        ```
+```
+
+
 # TopUp POST request
- ![alt text](https://github.com/aerogramme/momo/blob/master/addcash.png)
+ ![alt text](https://github.com/aerogramme/mymomo/blob/master/addcash.png)
 
 # Transfer POST request
- ![alt text](https://github.com/aerogramme/momo/blob/master/transfer.png)
+ ![alt text](https://github.com/aerogramme/mymomo/blob/master/transfer.png)
 
 # CURL
 
@@ -89,7 +128,7 @@ Basic Auth ->  "username": "freeworldboss", "password": "cq#4&Ds6~K+0iwU_",
 Localhost:
 
 curl -X POST \
-  http://127.0.0.1:5000/momo/api/v1/balance/ \
+  http://127.0.0.1:5000/momo/api/v1/transfer/ \
   -H 'Accept: */*' \
   -H 'Accept-Encoding: gzip, deflate' \
   -H 'Authorization: Basic ZnJlZXdvcmxkYm9zczpjcSM0JkRzNn5LKzBpd1Vf' \
@@ -108,11 +147,23 @@ curl -X POST \
    "amount": 8749.31
 }'
 
+Response:
+```
+    {
+      "amount": 530.0,
+      "code": 200,
+      "confirmation_Number": "TNF-20200317-903AAB",
+      "message": "Money transferred successfully from your wallet",
+      "status": "SUCCESS",
+      "transaction_ID": "ff62e746-0d99-40ab-bd33-6a62ddf2d522"
+    }
+```
+
 
 Remote:
 
  curl -X POST \
-  http://35.236.211.103:80/momo/api/v1/balance/ \
+  http://35.236.211.103:80/momo/api/v1/addcash/ \
   -H 'Accept: */*' \
   -H 'Authorization: Basic ZnJlZXdvcmxkYm9zczpjcSM0JkRzNn5LKzBpd1Vf' \
   -H 'Accept-Encoding: gzip, deflate' \
@@ -131,6 +182,21 @@ Remote:
    "email":"theodondre@gmail.com",
    "amount": 8749.31
 }'
+
+Response:
+```
+    {
+      "amount": 345.0,
+      "code": 200,
+      "confirmation_Number": "ADC-20200317-D3976D",
+      "message": "Money added successfully to your wallet",
+      "response": "Transaction was successful",
+      "status": "SUCCESS",
+      "transaction_ID": "6f647175-48f0-4368-b77d-bc7aa6979b38"
+    }
+```
+
+
 ```
 
 # PYTHON
