@@ -7,7 +7,7 @@ __copyright__ = 'Copyright (C) 2020 Theophilus Siameh'
 __version__ = 1.0
 ########################################################
 
-from flasgger import Swagger
+#from flasgger import Swagger
 from flask import Flask
 # from flask_mail import Mail
 from flask_pymongo import PyMongo
@@ -32,7 +32,7 @@ USERNAME = data.get("username")
 PASSWORD = data.get("password")
 
 app = Flask(__name__)
-swagger = Swagger(app)
+#swagger = Swagger(app)
 
 app.config['SECRET_KEY'] = "MobileMoney"
 app.config["MONGO_URI"] = "mongodb+srv://{0}:{1}@mobilemoney-q3w48.mongodb.net/{2}?retryWrites=true&w=majority".format(USERNAME, PASSWORD, DB)

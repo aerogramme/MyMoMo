@@ -61,14 +61,17 @@ Basic Auth ->  "username": "freeworldboss", "password": "cq#4&Ds6~K+0iwU_"
        "fromPhone":"0243559227",
        "toPhone":"0205592278",
        "email":"theodondre@gmail.com",
-       "amount": 8749.31
+       "amount": 8749.31,
+       "service_type":"Wallet",
+       "description":"Testing transaction"
     }
     ```
- - http://35.245.216.6/momo/api/v1/addcash
- - http://35.245.216.6/momo/api/v1/withdraw
- - http://35.245.216.6/momo/api/v1/transfer
- - http://35.245.216.6/momo/api/v1/balance/<<string:phone>>
- - http://35.245.216.6/momo/api/v1/balance/
+ - https://kubedoc.appspot.com/momo/api/v1/addcash
+ - https://kubedoc.appspot.com/momo/api/v1/withdraw
+ - https://kubedoc.appspot.com/momo/api/v1/transfer
+ - https://kubedoc.appspot.com/momo/api/v1/balance/<<string:phone>>
+ - https://kubedoc.appspot.com/momo/api/v1/get-transaction-status/<<string:transaction_id>>
+ - https://kubedoc.appspot.com/momo/api/v1/account-verification/<<string:phone>>
 
 
 #### GET Request:
@@ -78,14 +81,20 @@ GET transaction status
 
         -  http://127.0.0.1:5000/momo/api/v1/get-transaction-status/<<string:transaction_id>>
 
+        -  https://kubedoc.appspot.com/momo/api/v1/get-transaction-status/0089fc37-0aa0-485a-b40d-ffc67d347c1a
+
 GET account verification:
 
         -  http://127.0.0.1:5000/momo/api/v1/account-verification/<<string:phone>>
+
+        -  https://kubedoc.appspot.com/momo/api/v1/account-verification/0243559227
 
 ```
 
 ```bash
 curl -X GET http://127.0.0.1:5000/momo/api/v1/get-transaction-status/0089fc37-0aa0-485a-b40d-ffc67d347c1a
+
+curl -X GET https://kubedoc.appspot.com/momo/api/v1/get-transaction-status/0089fc37-0aa0-485a-b40d-ffc67d347c1a
 
 Response:
       ```
@@ -101,7 +110,7 @@ Response:
           "status": "SUCCESS"
         }
        ```
-curl -X GET http://127.0.0.1:5000/momo/api/v1/account-verification/0243559227
+curl -X GET https://kubedoc.appspot.com/momo/api/v1/balance/0243559227
 
 Response:
       ```

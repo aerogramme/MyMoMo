@@ -1,5 +1,8 @@
-Flask
-PyMongo
-Flask==0.12.3
+Flask==1.1.1
+PyMongo==3.10.1
 gunicorn==19.6.0
 flask_restful
+Flask-PyMongo==2.3.0
+flask_httpauth
+dnspython
+passlib
