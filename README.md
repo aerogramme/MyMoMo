@@ -3,7 +3,28 @@
 Simple Mobile Money Wallet Application 
 ```
 
-# Features
+  * [Simple Mobile Money Wallet Application](#kubernetes-spring-boot-example-in-google-kubernetes-engine-gke)
+    * [Table of Contents](#table-of-contents)
+    * [Features](#features)
+    * [Installation & Requirements](#Installation-&-Requirements)
+    * [Running the app in docker container](#Running-the-app-in-docker-container)
+    * [Using Docker](#Using-Docker)
+    * [CD into Docker container](#CD-into-Docker-container)
+    * [API EndPoints](#API-EndPoints)
+    * [POST Request](#POST-Request)
+    * [GET Request](#GET-Request)
+    * [TopUp POST request](#TopUp-POST-request)
+    * [Transfer POST request](#Transfer-POST-request)
+    * [CURL Commands](#curl)
+    * [PYTHON](#python)
+    * [JAVA](#java)
+    * [PHP](#php)
+    * [LICENSE](#license)
+    * [CONTACT US](#contact-us)
+    * [CONTRIBUTORS](#contributors)
+  
+
+## Features
 ```
 - Users can Top Up money on their mobile money wallet
 - Users can Transfer money to other mobile money wallet
@@ -36,6 +57,21 @@ Simple Mobile Money Wallet Application
 ```
 python app.py
 ```
+
+# Deploying app to remote server
+```bash
+gcloud config set project <<project-id>>
+
+gcloud app deploy
+
+gcloud app browse
+
+gcloud app deploy ~/my_app/app.yaml
+
+gcloud app describe
+
+```
+
 # API EndPoints
 ##### POST Request:
 ```

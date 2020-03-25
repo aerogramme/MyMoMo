@@ -19,7 +19,7 @@ def argParser():
     parser.add_argument("fromPhone", type=str, required=True, help="Sender Phone Number Required:format -> 0243559227")
     parser.add_argument("toPhone", type=str, required=True, help="Receiver Phone Number Required:format -> 0244120126")
     parser.add_argument("amount", type=float, required=True, help="Amount Required")
-    parser.add_argument("description", type=float, required=False, help="Description of Transaction")
+    parser.add_argument("description", type=str, required=False, help="Description of Transaction")
     parser.add_argument("email", type=str, required=False, help="Enter Email ID")
     return parser
 
